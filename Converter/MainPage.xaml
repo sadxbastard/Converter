@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converter="clr-namespace:Converter"
+             x:Class="Converter.MainPage"
+             x:DataType="Converter:ViewModel">
+    <ContentPage.BindingContext>
+        <Converter:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.ColumnSpan="2"
+               Grid.Row="0"
+               Text="Конвертер валют"
+               HorizontalOptions="Center"
+               FontSize="30"
+               Margin="10"></Label>
+        <Label Grid.Column="0"
+               Grid.Row="1"
+               Text="Дата курса:"
+               Margin="10,0,0,0"></Label>
+        <DatePicker Grid.Column="0"
+                    Grid.Row="2"
+                    Format="dd/MM/yyyy"
+                    Margin="10,5,0,10"
+                    Date="{Binding ChoiceDate}"></DatePicker>
+        <!--<Label Grid.Column="0"
+               Grid.Row="3"
+               Margin="10,0,0,10"
+               Text="{Binding ChoiceDate, StringFormat='Дата курса: {0:d}'}"
+               FontSize="15"></Label>-->
+        <Label Grid.Column="0"
+               Grid.Row="4"
+               Text="Исходная валюта:"
+               Margin="10,0,0,0"></Label>
+        <Picker Grid.Column="0"
+                Grid.Row="5"
+                Margin="10,5,0,10"
+                ItemsSource="{Binding ValuteItems}"
+                SelectedItem="{Binding ChoiceFirstValute}"></Picker>
+        <Entry Grid.Column="1"
+               Grid.Row="5"
+               Margin="10,5,10,10"
+               Placeholder="Введите значение"
+               Text="{Binding Value}"></Entry>
+        <Label Grid.Column="0"
+               Grid.Row="6"
+               Text="Целевая валюта:"
+               Margin="10,0,0,0"></Label>
+        <Picker Grid.Column="0"
+                Grid.Row="7"
+                Margin="10,5,0,10"
+                ItemsSource="{Binding ValuteItems}"
+                SelectedItem="{Binding ChoiceLastValute}"></Picker>
+        <Frame Grid.Column="1"
+               Grid.Row="7"
+               CornerRadius="4"
+               Margin="10,0,10,5"
+               Padding="10,0,0,0"
+               HeightRequest="45">
+            <Label Text="{Binding Transfer}"
+                   HeightRequest="20"></Label>
+        </Frame>
+
+        
+    </Grid>
+
+</ContentPage>
